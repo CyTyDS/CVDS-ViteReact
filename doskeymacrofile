@@ -1,0 +1,4 @@
+h=doskey /h
+pn=pnpm $*
+ls=dir $*
+alias=doskey /m
