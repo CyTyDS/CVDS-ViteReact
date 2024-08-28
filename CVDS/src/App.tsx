@@ -3,6 +3,10 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
+import Home from './components/home/Home'
+import About from './components/about/About'
+import Contacts from './components/contacts/Contacts'
+import Navbar from './components/navbar'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -30,11 +34,14 @@ function App() {
     //     Click on the Vite and React logos to learn more
     //   </p>
     // </>
-    <Routes>
-      <Route path='/' element={<Home/>} /> //TODO
-      <Route path='/about' element={<About/>} />
-      <Route path='/contact' element={<Contact/>} />
-    </Routes>
+    <>
+      <Navbar/>
+      <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path='/about' element={<About/>} />
+        <Route path='/contacts' element={<Contacts/>} />
+      </Routes>
+    </>
   )
 }
 

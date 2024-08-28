@@ -1,3 +1,4 @@
 - Routing
 - Multiple modules
 - CSS
+- Integration MUI (usage in components)
