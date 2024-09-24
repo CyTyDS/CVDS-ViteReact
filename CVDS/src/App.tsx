@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom'
 import Home from './components/home/Home'
 import About from './components/about/About'
 import Contacts from './components/contacts/Contacts'
-import Navbar from './components/navbar'
+import Navbar from './components/Navbar'
 
 function App() {
   const [count, setCount] = useState(0)

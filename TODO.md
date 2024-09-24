@@ -1,4 +1,4 @@
-- Routing
+- Routing (La navbar n'est pas opérationnelle et responsive)
 - Multiple modules
 - CSS
 - Integration MUI (usage in components)
