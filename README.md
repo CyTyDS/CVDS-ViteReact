@@ -10,8 +10,8 @@ Sah le CV de bogoss
 - MUI : 
 
 ## Commands
-doskey /macrofile=doskeymacrofile
-pn run dev
-pn run build
-pn run lint
-pn run preview
+- doskey /macrofile=doskeymacrofile
+- pn run dev
+- pn run build
+- pn run lint
+- pn run preview
