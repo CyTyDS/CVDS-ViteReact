@@ -1,75 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Inter:wght@300;400;600&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --bg-color: #0b0c10;
+  --panel-bg: rgba(15, 15, 18, 0.85);
+  --text-main: #e0e6ed;
+  --text-dim: #6c7a89;
+  --accent-red: #d32f2f;
+  --accent-red-glow: rgba(211, 47, 47, 0.4);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --scanline-color: rgba(255, 255, 255, 0.02);
+  
+  --font-heading: 'Oswald', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-a:hover {
-  color: #535bf2;
+
+/* CRT Scanline Effect */
+body::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, var(--scanline-color) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  z-index: 1000;
+  background-size: 100% 4px, 3px 100%;
+  pointer-events: none;
 }
 
 body {
-  margin: 0;
+  background-color: var(--bg-color);
+  background-image: radial-gradient(circle at 50% 50%, #1a1c23 0%, #0b0c10 100%);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  height: 100vh;
+  overflow: hidden;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  justify-content: center;
+  align-items: center;
 }
 
 #root {
   width: 100%;
-  height: 100vh;
-  padding: 0;
-  margin: 0;
+  height: 100%;
+  position: relative;
+  display: flex;
+}
+
+/* Typography elements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Reusable RE2 Glitch / Select animations */
+@keyframes select-pulse {
+  0% { text-shadow: 0 0 5px var(--accent-red-glow); background-color: rgba(211, 47, 47, 0.05); }
+  50% { text-shadow: 0 0 15px var(--accent-red), 0 0 5px var(--accent-red); background-color: rgba(211, 47, 47, 0.15); }
+  100% { text-shadow: 0 0 5px var(--accent-red-glow); background-color: rgba(211, 47, 47, 0.05); }
+}
+
+@keyframes scan-glitch {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-2px); }
+  40% { transform: translateX(2px); }
+  60% { transform: translateX(-1px); }
+  80% { transform: translateX(1px); }
+  100% { transform: translateX(0); }
+}
+
+/* Utility layout */
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
